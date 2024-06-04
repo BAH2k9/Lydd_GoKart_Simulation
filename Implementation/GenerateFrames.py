@@ -1,4 +1,4 @@
-import functions as f
+import Functions as f
 import pandas as pd
 import os
 
@@ -49,6 +49,7 @@ y_driver = [[] for _ in range(len(driver_names))]
 num_points_counter= [[] for _ in range(len(driver_names))]
 temp = 0
 
+# Calculate the driver position 
 for i in range(len(lap_times)):
     for lap_time in lap_times[i]:
         if str(lap_time) != 'nan':
@@ -105,15 +106,10 @@ c = {'red':'#df4717','orange':'#ea8f8f', 'green':'#8feab6','blue': '#95d9ff','pu
 
 
 
-# Create animation
-input_folder = cwd + "/frames"  
-output_mp4_path = cwd + "/sim.mp4"
-fps = 120
-# f.create_mp4_from_images(input_folder,output_mp4_path,fps)
 
 
-
-#-----------------------------------
+# --------------------- Multi-View frames -----------------------
+# This code is still unde development
 # Plotting track image, track coordinates/race line
 # fig, axs = plt.subplots(4)
 # axs[0].imshow(img)
@@ -128,34 +124,3 @@ fps = 120
 # axs[3].scatter(x_driver2[0:num_points2[0]],y_driver2[0:num_points2[0]],color=c.get('green'),s=2)
 
 # plt.show()
-
-
-
-''' Legacy code
-
-# for i,lap_time in enumerate(lap_times):
-#     speed = lap_distance/lap_time
-#     t_vec = [t/res for t in range(0,(lap_time*res))]
-#     d_vec = [speed*t for t in t_vec]
-    
-#     temp_x,temp_y = f.find_xy_for_d_vec(d_vec,distance,x_f,y_f)
-    
-#     x_driver.extend(temp_x)
-#     y_driver.extend(temp_y)
-
-
-
-# propagate forward the lap times
-# max_len = len(max(lap_times_raw,key=len))
-# lap_times =[]
-
-# for lap_time in lap_times_raw:
-    
-#     temp = [x for x in lap_time if str(x) != 'nan']
-#     len_to_append = max_len - len(temp)
-#     final_val = temp[-1]
-#     temp.extend([final_val]*len_to_append)
-#     lap_times.append(temp)
-
-
-    '''
